@@ -22,6 +22,16 @@ def createUser():
         case 3: user_type="Admin"
     user.append(user_type)
     users.append(user)
-    print(users)
+
+def loginUser():
+    emailLogin = input("Ingrese su email")
+    passwordLogin = input("Ingrese su contraseña")
+    for user in users:
+        if(user[4]==emailLogin and user[5]==passwordLogin):
+            print("Usted ha inciado sesion correctamente")
+
+        else:
+           print("Correo o contraseña incorrectos")
+
 
     
