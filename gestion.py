@@ -1,5 +1,6 @@
 users = []
 user_type_active = []
+name_active=[]
 subjects = []
 
 def createUser():
@@ -31,7 +32,9 @@ def loginUser():
     for user in users:
         if(user[4]==emailLogin and user[5]==passwordLogin):
             user_type_active.clear()
-            user_type_active.append(user[6])     
+            user_type_active.append(user[6]) 
+            name_active.clear()       
+            name_active.append(user[4])    
             print("Usted ha inciado sesion correctamente")
         else:
            print("Correo o contraseña incorrectos")
@@ -71,11 +74,21 @@ def updateGrades():
     else:
         print("Usted no puede subir notas")   
 
-
-
-
+def viewGrades():
+    if user_type_active[0]=="Estudiante":    
+        i = 1
+        for subject in subjects:
+            print(f"{i} {subject[0]}")
+        s = int(input("Ingrese que materia quiere consultar"))-1
+        subject_selected = subjects[s]
+        for grade in subject_selected:
+            if name_active[0]==grade[0]:
+                print(f"Su nota es: {grade[1]}")    
+    else:
+        print("Usted no puede ver las notas")            
+        
 #Menu
-option = option = int(input("Ingrese una opcion\n1. Crear usuario\n2. Iniciar sesion"))
+option = option = int(input("Ingrese una opcion\n1. Crear usuario"))
 match option:
     case 1:createUser()
     case _:print("Opcion invalida")
@@ -86,7 +99,7 @@ while option!=6:
         case 1: createUser()
         case 2: loginUser()
         case 3: updateGrades()
-        case 4: print("Aun no")
+        case 4: viewGrades()
         case 5: createSubject()
         case 6: print("Cerraste el sistema con exito")
         case _: print("Opcion no valida")
