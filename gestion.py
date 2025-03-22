@@ -1,4 +1,6 @@
 users = []
+user_type_active = ""
+subjects = []
 
 def createUser():
     user = []
@@ -22,6 +24,25 @@ def createUser():
         case 3: user_type="Admin"
     user.append(user_type)
     users.append(user)
-    print(users)
+
+def loginUser():
+    emailLogin = input("Ingrese su email")
+    passwordLogin = input("Ingrese su contraseña")
+    for user in users:
+        if(user[4]==emailLogin and user[5]==passwordLogin):
+            print("Usted ha inciado sesion correctamente")
+            user_type_active=user[6]
+
+        else:
+           print("Correo o contraseña incorrectos")
+
+def createSubject():
+    if user_type_active=="Admin":
+        subject = []
+        subjectName = input("Ingrese el nombre del curso ")
+        subject.append(subjectName)
+        subjects.append(subject)
+    else:
+        print("Usted no tiene permisos para crear cursos")
 
     
