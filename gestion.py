@@ -32,7 +32,6 @@ def loginUser():
         if(user[4]==emailLogin and user[5]==passwordLogin):
             print("Usted ha inciado sesion correctamente")
             user_type_active=user[6]
-
         else:
            print("Correo o contraseña incorrectos")
 
